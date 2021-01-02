@@ -1,9 +1,22 @@
 # zshrc.d
 
-**ARCHIVAL NOTICE:**
-_This functionality has been integrated to [mattmc3/ez](https://github.com/mattmc3/ez), which is corrects all the poor ZSH defaults. Use that instead._
+> Load ZSH config files from a zshrc.d directory
 
-> Load config files from a zshrc.d directory
+## Details
+
+Similar to the Fish shell's conf.d directory, this plugin allows you to source your .zshrc configuration from files in a directory.
+
+So, instead of storing all your configuration settings in a single `~/.zshrc` file, you can organize `.zsh` files in a `${ZDOTDIR:-$HOME}/.zshrc.d` directory and this plugin will source all of them.
+
+If using `$ZDOTDIR`, this plugin supports using the non-hidden `$ZDOTDIR/zshrc.d` directory as an alternative.
+
+## Customizing
+
+If you want to use an alternate path, add the following `zstyle` to your `.zshrc` prior to sourcing this plugin:
+
+```zsh
+zstyle -s ':zshrc.d:*' 'conf-dir' ~/path/to/my/custom/zshrc.d
+```
 
 ## Installation
 
