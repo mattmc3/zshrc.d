@@ -1,5 +1,5 @@
 # get the config options
-zstyle -s ':zshrc.d:*' 'conf-dir' _zshrcdir ||
+zstyle -s ':zshrc.d:*' 'path' _zshrcdir ||
   _zshrcdir=${ZDOTDIR:-$HOME}/.zshrc.d
 # no need to hide zshrc.d in $ZDOTDIR, so try that too
 if [[ -n $ZDOTDIR ]] && [[ -d ${ZDOTDIR}/zshrc.d ]]; then
@@ -21,5 +21,5 @@ function source_zshrcdir() {
     source "$f"
   done
 }
-source_confdir $_zshrcdir
+source_zshrcdir $_zshrcdir
 unset _zshrcdir

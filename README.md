@@ -15,7 +15,7 @@ If using `$ZDOTDIR`, this plugin supports using the non-hidden `$ZDOTDIR/zshrc.d
 If you want to use an alternate path, add the following `zstyle` to your `.zshrc` prior to sourcing this plugin:
 
 ```zsh
-zstyle -s ':zshrc.d:*' 'conf-dir' ~/path/to/my/custom/zshrc.d
+zstyle -s ':zshrc.d:*' 'path' ~/path/to/my/custom/zshrc.d
 ```
 
 ## Installation
