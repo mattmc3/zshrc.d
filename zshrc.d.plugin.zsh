@@ -1,9 +1,11 @@
 # get the config options
-zstyle -s ':zshrc.d:*' 'path' _zshrcdir ||
+zstyle -s ':zshrc.d:*' 'path' _zshrcdir
+if [[ $? -ne 0 ]]; then
   _zshrcdir=${ZDOTDIR:-$HOME}/.zshrc.d
-# no need to hide zshrc.d in $ZDOTDIR, so try that too
-if [[ -n $ZDOTDIR ]] && [[ -d ${ZDOTDIR}/zshrc.d ]]; then
-  _zshrcdir=${ZDOTDIR}/zshrc.d
+  # no need to hide zshrc.d in $ZDOTDIR, so try that too
+  if [[ -n $ZDOTDIR ]] && [[ ! -d $_zshrcdir ]]; then
+    _zshrcdir=${ZDOTDIR}/zshrc.d
+  fi
 fi
 
 function source_zshrcdir() {
