@@ -20,14 +20,19 @@ zstyle -s ':zshrc.d:*' 'path' ~/path/to/my/custom/zshrc.d
 
 ## Installation
 
+Using a Zsh plugin manager:
 - [pz]: `pz source mattmc3/zshrc.d`
 - [znap]: `znap source mattmc3/zshrc.d`
+- [zgenom]: `zgenom load mattmc3/zshrc.d`
+
+Legacy Zsh plugin managers:
 - [antibody]: `antibody bundle mattmc3/zshrc.d`
 - [zgen]: `zgen load mattmc3/zshrc.d`
-- [antigen]: `antigen bundle mattmc3/zshrc.d`
+- [antigen]: `antigen bundle mattmc3/zshrc.d@main`
 
 [pz]: https://github.com/mattmc3/pz
 [antigen]: https://github.com/zsh-users/antigen
 [antibody]: https://getantibody.github.io
 [znap]: https://github.com/marlonrichert/zsh-snap
 [zgen]: https://github.com/tarjoilija/zgen
+[zgenom]: https://github.com/jandamm/zgenom
