@@ -16,7 +16,7 @@ function source_zshrcdir() {
 
   # source configdir
   local f
-  local files=("$configdir"/*.{sh,zsh}(.N))
+  local files=("$configdir"/*.{sh,zsh}(N))
   for f in ${(o)files}; do
     # ignore files that begin with a tilde
     case $f:t in ~*) continue;; esac
