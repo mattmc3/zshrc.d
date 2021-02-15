@@ -12,8 +12,8 @@ function source_zshrc_dir() {
 
   # source all ZSH config files in a directory
   local configdir="$1"
-  [[ -z "$configdir" ]] && echo "expecting config dir argument" >&2 && return 1
-  [[ ! -d "$configdir" ]] && echo "config dir not found: $configdir" >&2 && return 1
+  [[ -z "$configdir" ]] && echo "source_zshrc_dir: expecting config dir argument" >&2 && return 1
+  [[ ! -d "$configdir" ]] && echo "source_zshrc_dir: config dir not found $configdir" >&2 && return 1
 
   # source configdir
   local f
