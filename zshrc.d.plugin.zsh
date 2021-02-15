@@ -1,14 +1,15 @@
-# get the config options
-zstyle -s ':zshrc.d:*' 'path' _zshrcdir
-if [[ $? -ne 0 ]]; then
-  _zshrcdir=${ZDOTDIR:-$HOME}/.zshrc.d
-  # no need to hide zshrc.d in $ZDOTDIR, so try that too
-  if [[ -n $ZDOTDIR ]] && [[ ! -d $_zshrcdir ]]; then
-    _zshrcdir=${ZDOTDIR}/zshrc.d
+# set the location of zshrc.d
+zstyle -s ':zshrc.d:*' 'path' _zshrcdir || {
+  if [[ -n "$ZDOTDIR" ]] && [[ -d "$ZDOTDIR/zshrc.d" ]]; then
+    _zshrcdir="$ZDOTDIR/zshrc.d"
+  else
+    _zshrcdir="${ZDOTDIR:-$HOME}/.zshrc.d"
   fi
-fi
+}
 
-function source_zshrcdir() {
+function source_zshrc_dir() {
+  emulate -L zsh; setopt local_options extended_glob null_glob
+
   # source all ZSH config files in a directory
   local configdir="$1"
   [[ -z "$configdir" ]] && echo "expecting config dir argument" >&2 && return 1
@@ -16,12 +17,12 @@ function source_zshrcdir() {
 
   # source configdir
   local f
-  local files=("$configdir"/*.{sh,zsh}(.N))
+  local files=("$configdir"/*.{sh,zsh})
   for f in ${(o)files}; do
     # ignore files that begin with a tilde
-    case $f:t in ~*) continue;; esac
+    case ${f:t} in '~'*) continue;; esac
     source "$f"
   done
 }
-source_zshrcdir $_zshrcdir
+source_zshrc_dir $_zshrcdir
 unset _zshrcdir
