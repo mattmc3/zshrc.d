@@ -6,7 +6,8 @@
 
 Similar to the Fish shell's conf.d directory, this plugin allows you to source your .zshrc configuration from files in a directory.
 
-So, instead of storing all your configuration settings in a single `~/.zshrc` file, you can organize `.zsh` files in a `${ZDOTDIR:-$HOME}/.zshrc.d` directory and this plugin will source all of them.
+So, instead of storing all your configuration settings in a single `~/.zshrc` file,
+you can organize `.zsh` files in a `${ZDOTDIR:-$HOME}/.zshrc.d` directory and this plugin will source all of them.
 
 If using `$ZDOTDIR`, this plugin supports using the non-hidden `$ZDOTDIR/zshrc.d` directory as an alternative.
 
@@ -31,11 +32,11 @@ To install manually, without a plugin manager, add the following to your .zshrc:
 ```zsh
 ZSH_PLUGIN_DIR=${HOME:-ZDOTDIR}/.zsh_plugins
 [[ -f $ZSH_PLUGIN_DIR/zshrc.d/zshrc.d.plugin.zsh ]] ||
-    git clone https://github.com/mattmc3/zshrc.d $ZSH_PLUGIN_DIR
+    git clone https://github.com/mattmc3/zshrc.d $ZSH_PLUGIN_DIR/zshrc.d
 source $ZSH_PLUGIN_DIR/zshrc.d/zshrc.d.plugin.zsh
 ```
 
-To install with Oh-My-Zsh:
+To install with [Oh-My-Zsh][omz]:
 
 ```zsh
 # from your interactive Zsh session, clone the repo
@@ -57,3 +58,5 @@ To install using a legacy Zsh plugin manager, add the following to your .zshrc:
 [znap]: https://github.com/marlonrichert/zsh-snap
 [zgen]: https://github.com/tarjoilija/zgen
 [zgenom]: https://github.com/jandamm/zgenom
+[omz]: https://github.com/ohmyzsh/ohmyzsh
+
