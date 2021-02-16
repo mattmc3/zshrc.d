@@ -42,6 +42,6 @@ function setup() {
 }
 
 function teardown() {
-  # [[ -d "$TEST_TEMPDIR" ]] && rm -rf $TEST_TEMPDIR
-  # unset TEST_TEMPDIR
+  [[ -d "$TEST_TEMPDIR" ]] && rm -rf $TEST_TEMPDIR
+  unset TEST_TEMPDIR
 }

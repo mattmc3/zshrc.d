@@ -1,28 +1,30 @@
-# set the location of zshrc.d
-zstyle -s ':zshrc.d:*' 'path' _zshrcdir || {
-  if [[ -n "$ZDOTDIR" ]] && [[ -d "$ZDOTDIR/zshrc.d" ]]; then
-    _zshrcdir="$ZDOTDIR/zshrc.d"
-  else
-    _zshrcdir="${ZDOTDIR:-$HOME}/.zshrc.d"
-  fi
-}
-
-function source_zshrc_dir() {
+function source_conf_dir() {
   emulate -L zsh; setopt local_options extended_glob null_glob
 
-  # source all ZSH config files in a directory
-  local configdir="$1"
-  [[ -z "$configdir" ]] && echo "source_zshrc_dir: expecting config dir argument" >&2 && return 1
-  [[ ! -d "$configdir" ]] && echo "source_zshrc_dir: config dir not found $configdir" >&2 && return 1
+  # confdir is passed in, or use the zstyle setting, or the default location
+  # default location is ~/.zshrc.d, or $ZDOTDIR/zshrc.d
+  local confdir="$1"
+  if [[ -z "$confdir" ]]; then
+    zstyle -s ':zshrc.d:*' 'path' confdir || {
+      confdir="${ZDOTDIR:-$HOME}/.zshrc.d"
+      [[ ! -d "$confdir" ]] && [[ -n "$ZDOTDIR" ]] && confdir="${ZDOTDIR}/zshrc.d"
+    }
+  fi
 
-  # source configdir
-  local f
-  local files=("$configdir"/*.{sh,zsh})
-  for f in ${(o)files}; do
+  # make sure we found the conf dir
+  [[ ! -d "$confdir" ]] && echo "source_conf_dir: config dir not found $confdir" >&2 && return 1
+
+  # source all files in confdir
+  local files=("$confdir"/*.{sh,zsh})
+  local f; for f in ${(o)files}; do
     # ignore files that begin with a tilde
     case ${f:t} in '~'*) continue;; esac
     source "$f"
   done
 }
-source_zshrc_dir $_zshrcdir
-unset _zshrcdir
+
+() {
+  local defer_confdir
+  zstyle -s ':zshrc.d:*' 'defer' defer_confdir || defer_confdir=false
+  [[ $defer_confdir = true ]] || source_conf_dir
+}
