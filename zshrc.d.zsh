@@ -25,6 +25,6 @@ function source_conf_dir() {
 
 () {
   local defer_confdir
-  zstyle -s ':zshrc.d:*' 'defer' defer_confdir || defer_confdir=false
-  [[ $defer_confdir = true ]] || source_conf_dir
+  zstyle -b ':zshrc.d:*' 'defer' defer_confdir || defer_confdir=no
+  [[ $defer_confdir = yes ]] || source_conf_dir
 }
