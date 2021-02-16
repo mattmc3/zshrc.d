@@ -18,15 +18,19 @@ _Q: Does this mean I can replace my `.zshrc` file entirely?_
 **A: No, you will still need a `.zshrc` file for Zsh to run properly, but you can reduce its contents to just the minimal code required to load this plugin and then use your `.zshrc.d` directory for everything else.**
 
 _Q: How can I ensure that my .zsh config files are loaded in the right order?_
+
 **A: Files are sorted alphabetically by locale, the same as your `ls` command, so name your files accordingly.**
 
 _Q: How do I name files if I need them to load first?_
+
 **A: One method is to prefix any files that have to load first with a numbering scheme (ie: 00-99).**
 
 _Q: How do I name files if I need them to load last?_
+
 **A: One method is to prefix any files that have to load last with `zz-`.**
 
 _Q: How do I keep a file in my .zshrc.d directory, but prevent it from being sourced?_
+
 **A: Files prefixed with a tilde (~) are skipped by this plugin.**
 
 ## Customizing
