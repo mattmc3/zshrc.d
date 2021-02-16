@@ -29,7 +29,7 @@ _Q: How do I name files if I need them to load last?_
 
 **A: One method is to prefix any files that have to load last with `zz-`.**
 
-_Q: How do I keep a file in my .zshrc.d directory, but prevent it from being sourced?_
+_Q: How do I keep a file in my zshrc.d directory, but prevent it from being sourced?_
 
 **A: Files prefixed with a tilde (~) are skipped by this plugin.**
 
@@ -38,14 +38,14 @@ _Q: How do I keep a file in my .zshrc.d directory, but prevent it from being sou
 If you want to use an alternate path, add the following `zstyle` to your `.zshrc` prior to sourcing this plugin:
 
 ```zsh
-zstyle -s ':zshrc.d:*' 'path' ~/path/to/my/custom/zshrc.d
+zstyle ':zshrc.d:*' 'path' ~/path/to/my/custom/zshrc.d
 ```
 
 If you want the `source_conf_dir` function, but you want to call it yourself later,
 add the following `zstyle` to your `.zshrc` prior to sourcing this plugin:
 
 ```zsh
-zstyle -s ':zshrc.d:*' 'defer' yes
+zstyle ':zshrc.d:*' 'defer' yes
 ```
 
 ## Installation
