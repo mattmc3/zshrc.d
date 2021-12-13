@@ -4,7 +4,7 @@
 # pre-tests
 @test '$sourced_files is empty' ${#sourced_files} -eq 0
 
-source ${0:a:h}/includes/setup_teardown.zsh
+source ${0:a:h}/includes/bootstrap.zsh
 setup "empty"
 
 @test 'zshrc.d exists' -d $TEST_TEMPDIR

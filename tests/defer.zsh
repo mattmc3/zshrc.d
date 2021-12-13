@@ -1,7 +1,7 @@
 0=${(%):-%N}
 @echo "=== ${0:t:r} ==="
 
-source ${0:a:h}/includes/setup_teardown.zsh
+source ${0:a:h}/includes/bootstrap.zsh
 
 @test '$sourced_files contains 0 elements' ${#sourced_files} -eq 0
 zstyle ':zshrc.d:*' 'defer' true

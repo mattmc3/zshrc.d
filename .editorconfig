@@ -10,9 +10,12 @@ indent_style = tab
 indent_size = 4
 
 [*.md]
-# Don't trim end spacing because Markdown uses that
 indent_style = space
 trim_trailing_whitespace = false
+
+[**/functions/*]
+indent_style = space
+indent_size = 2
 
 [*.zsh]
 indent_style = space

@@ -1,0 +1,14 @@
+#!/usr/bin/env zsh
+
+0=${(%):-%N}
+PROJ_HOME=${0:a:h:h}
+
+[[ -d $PROJ_HOME/.ztap ]] ||
+  git clone --depth 1 -q https://github.com/mattmc3/ztap.git $PROJ_HOME/.ztap
+
+source $PROJ_HOME/.ztap/ztap.zsh
+if [[ $# -gt 0 ]]; then
+  ztap "$@" | $PROJ_HOME/.ztap/bin/colorize_tap
+else
+  ztap $PROJ_HOME/tests/*.zsh | $PROJ_HOME/.ztap/bin/colorize_tap
+fi

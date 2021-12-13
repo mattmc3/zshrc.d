@@ -6,7 +6,7 @@
 typeset -f source_conf_dir > /dev/null
 @test 'source_conf_dir function does not exist' $? -ne 0
 
-source ${0:a:h}/includes/setup_teardown.zsh
+source ${0:a:h}/includes/bootstrap.zsh
 setup
 
 @test 'zshrc.d exists' -d $TEST_TEMPDIR
