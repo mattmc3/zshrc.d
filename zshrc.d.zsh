@@ -1,9 +1,10 @@
 () {
     # determine zshrc.d
     if [[ -z "$ZSHRCD" ]]; then
-        ZSHRCD="${ZDOTDIR:-$HOME}/.zshrc.d"
-        if [[ ! -d "$ZSHRCD" ]] && [[ -d "$ZDOTDIR/zshrc.d" ]]; then
+        if [[ -d "$ZDOTDIR/zshrc.d" ]]; then
             ZSHRCD="$ZDOTDIR/zshrc.d"
+        else
+            ZSHRCD="${ZDOTDIR:-$HOME}/.zshrc.d"
         fi
     fi
     # make sure we found the zshrc.d
