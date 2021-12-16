@@ -1,5 +1,10 @@
 # zshrc.d
 
+[![License](https://img.shields.io/badge/license-MIT-007EC7)](/LICENSE)
+[![built for](https://img.shields.io/badge/built%20for-%20%F0%9F%A6%93%20zshzoo-black)][zshzoo]
+[![works with prezto](https://img.shields.io/badge/works%20with-%E2%9D%AF%E2%9D%AF%E2%9D%AF%20prezto-red)](#install-for-prezto)
+[![works with ohmyzsh](https://img.shields.io/badge/works%20with-%20%E2%9E%9C%20oh--my--zsh-C2D33F)](#install-for-oh-my-zsh)
+
 > Load ZSH config files from a zshrc.d directory
 
 ## Description
@@ -51,41 +56,74 @@ ZSHRCD=~/path/to/my/custom/zshrc.d
 
 ## Installation
 
-To install using a modern Zsh plugin manager, add the following to your .zshrc
+### Install with a Zsh plugin manager
 
-- [pz]: `pz source mattmc3/zshrc.d`
-- [znap]: `znap source mattmc3/zshrc.d`
-- [zgenom]: `zgenom load mattmc3/zshrc.d`
+To install using a Zsh plugin manager, add the following to your .zshrc
 
-To install manually, without a plugin manager, add the following to your .zshrc:
+- [pz]: `pz source zshzoo/zshrc.d`
+- [zcomet]: `zcomet load zshzoo/zshrc.d`
+- [zgenom]: `zgenom load zshzoo/zshrc.d`
+- [znap]: `znap source zshzoo/zshrc.d`
+
+### Install manually, without a plugin manager
+
+To install manually, first clone the repo:
 
 ```zsh
-ZSH_PLUGIN_DIR=${HOME:-ZDOTDIR}/.zsh_plugins
-[[ -f $ZSH_PLUGIN_DIR/zshrc.d/zshrc.d.plugin.zsh ]] ||
-    git clone https://github.com/mattmc3/zshrc.d $ZSH_PLUGIN_DIR/zshrc.d
-source $ZSH_PLUGIN_DIR/zshrc.d/zshrc.d.plugin.zsh
+git clone https://github.com/zshzoo/zshrc.d ${ZDOTDIR:-~}/.zplugins/zshrc.d
 ```
 
-To install with [Oh-My-Zsh][omz]:
+Then, in your .zshrc, add the following line:
 
 ```zsh
-# from your interactive Zsh session, clone the repo
-git clone https://github.com/mattmc3/zshrc.d $ZSH_CUSTOM/plugins/zshrc.d
+source ${ZDOTDIR:-~}/.zplugins/zshrc.d/zshrc.d.zsh
+```
 
+### Install for Oh-My-Zsh
+
+To install with [Oh-My-Zsh][omz], first clone the repo from an interactive Zsh session:
+
+```zsh
+# make sure your $ZSH_CUSTOM is set
+ZSH_CUSTOM=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}
+
+# now, clone the plugin
+git clone https://github.com/zshzoo/zshrc.d $ZSH_CUSTOM/plugins/zshrc.d
+```
+
+Then, add the plugin to your Oh-My-Zsh plugins list in your .zshrc
+
+```zsh
 # in your .zshrc, add this plugin to your plugins list
 plugins=(... zshrc.d)
 ```
 
-To install using a legacy Zsh plugin manager, add the following to your .zshrc:
+### Install for Prezto
 
-- [antibody]: `antibody bundle mattmc3/zshrc.d`
-- [zgen]: `zgen load mattmc3/zshrc.d`
-- [antigen]: `antigen bundle mattmc3/zshrc.d@main`
+To install with [Prezto][prezto], first clone the repo from an interactive Zsh session:
 
+```zsh
+# make sure your $ZPREZTODIR is set
+ZPREZTODIR=${ZPREZTODIR:-~/.zprezto}
+# clone the repo to a prezto contrib dir
+git clone https://github.com/zshzoo/zshrc.d $ZPREZTODIR/contrib/zshrc.d/external
+# set up the contrib
+echo "source \${0:A:h}/external/zshrc.d.plugin.zsh" > $ZPREZTODIR/contrib/zshrc.d/init.zsh
+```
+
+Then, add the plugin to your Prezto plugins list in .zpreztorc
+
+```zsh
+zstyle ':prezto:load' pmodule \
+  ... \
+  zshrc.d
+  ...
+```
+
+[ohmyzsh]: https://github.com/ohmyzsh/ohmyzsh
+[prezto]: https://github.com/sorin-ionescu/prezto
+[zshzoo]: https://github.com/zshzoo/zshzoo
 [pz]: https://github.com/mattmc3/pz
-[antigen]: https://github.com/zsh-users/antigen
-[antibody]: https://getantibody.github.io
-[znap]: https://github.com/marlonrichert/zsh-snap
-[zgen]: https://github.com/tarjoilija/zgen
+[zcomet]: https://github.com/agkozak/zcomet
 [zgenom]: https://github.com/jandamm/zgenom
-[omz]: https://github.com/ohmyzsh/ohmyzsh
+[znap]: https://github.com/marlonrichert/zsh-snap
