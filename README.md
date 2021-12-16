@@ -116,7 +116,7 @@ Then, add the plugin to your Prezto plugins list in .zpreztorc
 ```zsh
 zstyle ':prezto:load' pmodule \
   ... \
-  zshrc.d
+  zshrc.d \
   ...
 ```
 
