@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 if [[ -d "$TEST_TEMPDIR" ]] && [[ $TEST_TEMPDIR =~ '^/(var|tmp)' ]]; then
 	rm -rf $TEST_TEMPDIR
 else
