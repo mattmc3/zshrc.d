@@ -60,7 +60,7 @@ ZSHRCD=~/path/to/my/custom/zshrc.d
 
 To install using a Zsh plugin manager, add the following to your .zshrc
 
-- [pz]: `pz source zshzoo/zshrc.d`
+- [antidote]: `antidote bundle zshzoo/zshrc.d`
 - [zcomet]: `zcomet load zshzoo/zshrc.d`
 - [zgenom]: `zgenom load zshzoo/zshrc.d`
 - [znap]: `znap source zshzoo/zshrc.d`
@@ -123,7 +123,7 @@ zstyle ':prezto:load' pmodule \
 [ohmyzsh]: https://github.com/ohmyzsh/ohmyzsh
 [prezto]: https://github.com/sorin-ionescu/prezto
 [zshzoo]: https://github.com/zshzoo/zshzoo
-[pz]: https://github.com/mattmc3/pz
+[antidote]: https://github.com/mattmc3/antidote
 [zcomet]: https://github.com/agkozak/zcomet
 [zgenom]: https://github.com/jandamm/zgenom
 [znap]: https://github.com/marlonrichert/zsh-snap
