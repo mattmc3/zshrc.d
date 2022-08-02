@@ -1,4 +1,6 @@
 function source-zshrcd {
+  setopt extended_glob
+
   # glob search for the zshrc.d dir
   local zshrcd=(
     $ZSHRCD(/N)
@@ -9,7 +11,8 @@ function source-zshrcd {
   zshrcd=$zshrcd[1]
 
   if [[ ! -d "$zshrcd" ]]; then
-    echo >&2 "zshrc.d: dir not found '$zshrcd'" && return 1
+    echo >&2 "zshrc.d: dir not found '${ZSHRCD:-${ZDOTDIR:-$HOME}/.zshrc.d}'"
+    return 1
   fi
 
   # source files in zshrc.d in order
