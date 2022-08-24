@@ -1,5 +1,8 @@
-0=${(%):-%N}
-@echo "=== ${0:t:r} ==="
+#!/usr/bin/env zsh
+0=${(%):-%x}
+BASEDIR=${0:A:h:h}
+source $ZTAP_HOME/ztap3.zsh
+ztap_header "${0:t:r}"
 
 # use a tempdir as our ZDOTDIR
 tmpdir=$(mktemp -d)
@@ -26,3 +29,5 @@ source ${0:A:h}/../zshrc.d.plugin.zsh 2> /dev/null
 
 # teardown
 [[ -d $tmpdir ]] && rm -rf $tmpdir
+
+ztap_footer

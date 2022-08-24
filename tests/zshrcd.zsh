@@ -1,5 +1,8 @@
-0=${(%):-%N}
-@echo "=== ${0:t:r} ==="
+#!/usr/bin/env zsh
+0=${(%):-%x}
+BASEDIR=${0:A:h:h}
+source $ZTAP_HOME/ztap3.zsh
+ztap_header "${0:t:r}"
 
 # pre-tests
 @test '$sourced_files is empty' ${#sourced_files} -eq 0
@@ -18,3 +21,4 @@ existing_files=(${existing_files#$TEST_TEMPDIR/})
 @echo "The following files/dirs existed in the directory: ${existing_files}"
 
 teardown
+ztap_footer
