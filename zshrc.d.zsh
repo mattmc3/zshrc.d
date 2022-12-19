@@ -3,14 +3,14 @@ function source-zshrcd {
 
   # glob search for the zshrc.d dir
   local zshrcd=(
-    $ZSHRCD(/N)
-    $ZDOTDIR/zshrc.d(/N)
-    $ZDOTDIR/conf.d(/N)
-    ${ZDOTDIR:-$HOME}/.zshrc.d(/N)
+    $ZSHRCD(N)
+    $ZDOTDIR/zshrc.d(N)
+    $ZDOTDIR/conf.d(N)
+    ${ZDOTDIR:-$HOME}/.zshrc.d(N)
   )
   zshrcd=$zshrcd[1]
 
-  if [[ ! -d "$zshrcd" ]]; then
+  if ! (( ${#zshrcd} )); then
     echo >&2 "zshrc.d: dir not found '${ZSHRCD:-${ZDOTDIR:-$HOME}/.zshrc.d}'"
     return 1
   fi
