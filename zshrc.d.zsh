@@ -2,26 +2,27 @@ function source-zshrcd {
   setopt extended_glob
 
   # glob search for the zshrc.d dir
-  local zshrcd=(
-    $ZSHRCD(N)
+  local -a zshrcd=()
+  [[ -n "$ZSHRCD" ]] && zshrcd+=($ZSHRCD(N))
+  [[ -n "$ZDOTDIR" ]] && zshrcd+=(
     $ZDOTDIR/zshrc.d(N)
     $ZDOTDIR/conf.d(N)
-    ${ZDOTDIR:-$HOME}/.zshrc.d(N)
+    $ZDOTDIR/rc.d(N)
   )
-  zshrcd=$zshrcd[1]
+  zshrcd+=(${ZDOTDIR:-$HOME}/.zshrc.d(N))
 
-  if ! (( ${#zshrcd} )); then
+  if ! (( $#zshrcd )); then
     echo >&2 "zshrc.d: dir not found '${ZSHRCD:-${ZDOTDIR:-$HOME}/.zshrc.d}'"
     return 1
   fi
 
-  # source files in zshrc.d in order
-  local conf_files=("$zshrcd"/*.{sh,zsh}(N))
-  local f
-  for f in ${(o)conf_files}; do
+  local -a conf_files=("$zshrcd[1]"/*.{sh,zsh}(N))
+  local rcfile
+  # sort and source conf files
+  for rcfile in ${(o)conf_files}; do
     # ignore files that begin with a tilde
-    case ${f:t} in '~'*) continue;; esac
-    source "$f"
+    case ${rcfile:t} in '~'*) continue;; esac
+    source "$rcfile"
   done
 }
 source-zshrcd
