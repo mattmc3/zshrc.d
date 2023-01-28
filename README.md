@@ -1,7 +1,6 @@
 # zshrc.d
 
 [![License](https://img.shields.io/badge/license-MIT-007EC7)](/LICENSE)
-[![built for](https://img.shields.io/badge/built%20for-%20%F0%9F%A6%93%20zshzoo-black)][zshzoo]
 [![works with prezto](https://img.shields.io/badge/works%20with-%E2%9D%AF%E2%9D%AF%E2%9D%AF%20prezto-red)](#install-for-prezto)
 [![works with ohmyzsh](https://img.shields.io/badge/works%20with-%20%E2%9E%9C%20oh--my--zsh-C2D33F)](#install-for-oh-my-zsh)
 
@@ -45,6 +44,10 @@ _Q: How do I keep a file in my zshrc.d directory, but prevent it from being sour
 
 **A: Files prefixed with a tilde (~) are skipped by this plugin.**
 
+_Q: What names can I use for my `.zshrc.d` directory?_
+
+**A: `${ZDOTDIR:~}/.zshrc.d`, `$ZDOTDIR/zshrc.d`, `$ZDOTDIR/conf.d`, and `$ZDOTDIR/rc.d` are supported by default. If you want a different directory, you should set the `$ZSHRCD` variable.**
+
 ## Customizing
 
 If you want to use an alternate path, add set the `$ZSHRCD` variable prior to sourcing
@@ -60,7 +63,7 @@ ZSHRCD=~/path/to/my/custom/zshrc.d
 
 To install using a Zsh plugin manager, add the following to your .zshrc
 
-- [antidote]: `antidote bundle zshzoo/zshrc.d`
+- [antidote]: `antidote install zshzoo/zshrc.d`
 - [zcomet]: `zcomet load zshzoo/zshrc.d`
 - [zgenom]: `zgenom load zshzoo/zshrc.d`
 - [znap]: `znap source zshzoo/zshrc.d`
