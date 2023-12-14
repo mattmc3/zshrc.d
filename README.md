@@ -63,17 +63,17 @@ ZSHRCD=~/path/to/my/custom/zshrc.d
 
 To install using a Zsh plugin manager, add the following to your .zshrc
 
-- [antidote]: `antidote install zshzoo/zshrc.d`
-- [zcomet]: `zcomet load zshzoo/zshrc.d`
-- [zgenom]: `zgenom load zshzoo/zshrc.d`
-- [znap]: `znap source zshzoo/zshrc.d`
+- [antidote]: `antidote install mattmc3/zshrc.d`
+- [zcomet]: `zcomet load mattmc3/zshrc.d`
+- [zgenom]: `zgenom load mattmc3/zshrc.d`
+- [znap]: `znap source mattmc3/zshrc.d`
 
 ### Install manually, without a plugin manager
 
 To install manually, first clone the repo:
 
 ```zsh
-git clone https://github.com/zshzoo/zshrc.d ${ZDOTDIR:-~}/.zplugins/zshrc.d
+git clone https://github.com/mattmc3/zshrc.d ${ZDOTDIR:-~}/.zplugins/zshrc.d
 ```
 
 Then, in your .zshrc, add the following line:
@@ -91,7 +91,7 @@ To install with [Oh-My-Zsh][ohmyzsh], first clone the repo from an interactive Z
 ZSH_CUSTOM=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}
 
 # now, clone the plugin
-git clone https://github.com/zshzoo/zshrc.d $ZSH_CUSTOM/plugins/zshrc.d
+git clone https://github.com/mattmc3/zshrc.d $ZSH_CUSTOM/plugins/zshrc.d
 ```
 
 Then, add the plugin to your Oh-My-Zsh plugins list in your .zshrc
@@ -109,7 +109,7 @@ To install with [Prezto][prezto], first clone the repo from an interactive Zsh s
 # make sure your $ZPREZTODIR is set
 ZPREZTODIR=${ZPREZTODIR:-~/.zprezto}
 # clone the repo to a prezto contrib dir
-git clone https://github.com/zshzoo/zshrc.d $ZPREZTODIR/contrib/zshrc.d/external
+git clone https://github.com/mattmc3/zshrc.d $ZPREZTODIR/contrib/zshrc.d/external
 # set up the contrib
 echo "source \${0:A:h}/external/zshrc.d.plugin.zsh" > $ZPREZTODIR/contrib/zshrc.d/init.zsh
 ```
@@ -125,7 +125,6 @@ zstyle ':prezto:load' pmodule \
 
 [ohmyzsh]: https://github.com/ohmyzsh/ohmyzsh
 [prezto]: https://github.com/sorin-ionescu/prezto
-[zshzoo]: https://github.com/zshzoo/zshzoo
 [antidote]: https://github.com/mattmc3/antidote
 [zcomet]: https://github.com/agkozak/zcomet
 [zgenom]: https://github.com/jandamm/zgenom
