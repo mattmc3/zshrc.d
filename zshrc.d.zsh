@@ -1,28 +1,23 @@
-function source-zshrcd {
-  setopt extended_glob
+#
+# zshrc.d: Use a directory to source .zshrc files, similar to Fish's conf.d.
+#
 
-  # glob search for the zshrc.d dir
-  local -a zshrcd=()
-  [[ -n "$ZSHRCD" ]] && zshrcd+=($ZSHRCD(N))
-  [[ -n "$ZDOTDIR" ]] && zshrcd+=(
-    $ZDOTDIR/zshrc.d(N)
-    $ZDOTDIR/conf.d(N)
-    $ZDOTDIR/rc.d(N)
-  )
-  zshrcd+=(${ZDOTDIR:-$HOME}/.zshrc.d(N))
+typeset -ga _zshrcd=(
+  $ZSHRCD
+  ${ZDOTDIR:-/dev/null}/zshrc.d(N)
+  ${ZDOTDIR:-/dev/null}/conf.d(N)
+  ${ZDOTDIR:-/dev/null}/rc.d(N)
+  ${ZDOTDIR:-$HOME}/.zshrc.d(N)
+)
+if [[ ! -e "$_zshrcd[1]" ]]; then
+  echo >&2 "zshrc.d: dir not found '${ZSHRCD:-${ZDOTDIR:-$HOME}/.zshrc.d}'."
+  return 1
+fi
 
-  if ! (( $#zshrcd )); then
-    echo >&2 "zshrc.d: dir not found '${ZSHRCD:-${ZDOTDIR:-$HOME}/.zshrc.d}'"
-    return 1
-  fi
-
-  local -a conf_files=("$zshrcd[1]"/*.{sh,zsh}(N))
-  local rcfile
-  # sort and source conf files
-  for rcfile in ${(o)conf_files}; do
-    # ignore files that begin with a tilde
-    case ${rcfile:t} in '~'*) continue;; esac
-    source "$rcfile"
-  done
-}
-source-zshrcd
+typeset -ga _zshrcd=("$_zshrcd[1]"/*.{sh,zsh}(N))
+typeset -g _zshrcd_file
+for _zshrcd_file in ${(o)_zshrcd}; do
+  [[ ${_zshrcd_file:t} != '~'* ]] || continue  # ignore tilde files
+  source "$_zshrcd_file"
+done
+unset _zshrcd{,_file}
