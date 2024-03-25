@@ -1,7 +1,0 @@
-#!/usr/bin/env zsh
-if [[ -d "$TEST_TEMPDIR" ]] && [[ $TEST_TEMPDIR =~ '^/(var|tmp)' ]]; then
-	rm -rf $TEST_TEMPDIR
-else
-  echo "!! unable to remove $TEST_TMPDIR"
-fi
-unset TEST_TEMPDIR TEST_HOME
